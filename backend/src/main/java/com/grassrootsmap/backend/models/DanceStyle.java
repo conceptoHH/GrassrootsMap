@@ -1,23 +1,27 @@
 package com.grassrootsmap.backend.models;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "Dance_Style")
-public class Dance_Style {
+@Table(name = "DanceStyle")
+public class DanceStyle {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String style_name;
+    @CreationTimestamp
     private LocalDate created_at;
+    @UpdateTimestamp
     private LocalDate updated_at;
 
-    public Dance_Style(){}
+    public DanceStyle(){}
 
-    public Dance_Style(Long id, String style_name, LocalDate created_at, LocalDate updated_at) {
+    public DanceStyle(Long id, String style_name, LocalDate created_at, LocalDate updated_at) {
         this.id = id;
         this.style_name = style_name;
         this.created_at = created_at;

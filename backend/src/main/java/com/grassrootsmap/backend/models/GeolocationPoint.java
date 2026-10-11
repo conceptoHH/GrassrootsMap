@@ -1,34 +1,41 @@
 package com.grassrootsmap.backend.models;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 import org.locationtech.jts.geom.Point;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
-@Table(name = "geolocation_point")
-public class geolocation_point {
+@Table(name = "GeolocationPoint")
+public class GeolocationPoint {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
+    @Column(columnDefinition = "geometry(Point,4326)")
     private Point exact_location;
+    @Column(columnDefinition = "geometry(Point,4326)")
     private Point public_location;
     private Boolean visibility;
     @OneToOne
     @JoinColumn(name = "user_id")
-    private User user_id;
+    private Users user;
+    @CreationTimestamp
     private LocalDateTime created_at;
+    @UpdateTimestamp
     private LocalDateTime updated_at;
 
-    public geolocation_point() {}
+    public GeolocationPoint() {}
 
-    public geolocation_point(UUID id, Point exact_location, Point public_location, Boolean visibility, User user_id, LocalDateTime created_at, LocalDateTime updated_at) {
+    public GeolocationPoint(UUID id, Point exact_location, Point public_location, Boolean visibility, Users user, LocalDateTime created_at, LocalDateTime updated_at) {
         this.id = id;
         this.exact_location = exact_location;
         this.public_location = public_location;
         this.visibility = visibility;
-        this.user_id = user_id;
+        this.user = user;
         this.created_at = created_at;
         this.updated_at = updated_at;
     }
@@ -65,12 +72,12 @@ public class geolocation_point {
         this.visibility = visibility;
     }
 
-    public User getUser_id() {
-        return user_id;
+    public Users getUser_id() {
+        return user;
     }
 
-    public void setUser_id(User user_id) {
-        this.user_id = user_id;
+    public void setUser_id(Users users_id) {
+        this.user = users_id;
     }
 
     public LocalDateTime getCreated_at() {

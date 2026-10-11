@@ -1,42 +1,44 @@
 package com.grassrootsmap.backend.models;
 
-import com.grassrootsmap.backend.enums.DanceStyleEnum;
 import com.grassrootsmap.backend.enums.UserRoleEnum;
 import com.grassrootsmap.backend.enums.UserStatusEnum;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import org.springframework.data.relational.core.mapping.Table;
+import jakarta.persistence.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDate;
-import java.util.List;
 import java.util.UUID;
 
 @Entity
-@Table(name = "User")
-public class User {
+@Table(name = "Users")
+public class Users {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
+    @Column(unique = true,nullable = false)
     private String username;
+    @Column(unique = true,nullable = false)
     private String email;
     private String password;
+    @Enumerated(EnumType.STRING)
     private UserRoleEnum role;
+    @Enumerated(EnumType.STRING)
     private UserStatusEnum status;
+    @CreationTimestamp
     private LocalDate created_at;
+    @UpdateTimestamp
     private LocalDate updated_at;
 
-    public User(){}
+    public Users(){}
 
-    public User(UUID id,
-                String username,
-                String email,
-                String password,
-                UserRoleEnum role,
-                UserStatusEnum status,
-                LocalDate created_at,
-                LocalDate updated_at) {
+    public Users(UUID id,
+                 String username,
+                 String email,
+                 String password,
+                 UserRoleEnum role,
+                 UserStatusEnum status,
+                 LocalDate created_at,
+                 LocalDate updated_at) {
         this.id = id;
         this.username = username;
         this.email = email;
