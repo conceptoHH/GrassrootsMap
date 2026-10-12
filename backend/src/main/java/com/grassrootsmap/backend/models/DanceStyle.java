@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "DanceStyle")
@@ -15,13 +15,13 @@ public class DanceStyle {
     private Long id;
     private String style_name;
     @CreationTimestamp
-    private LocalDate created_at;
+    private LocalDateTime created_at;
     @UpdateTimestamp
-    private LocalDate updated_at;
+    private LocalDateTime updated_at;
 
     public DanceStyle(){}
 
-    public DanceStyle(Long id, String style_name, LocalDate created_at, LocalDate updated_at) {
+    public DanceStyle(Long id, String style_name, LocalDateTime created_at, LocalDateTime updated_at) {
         this.id = id;
         this.style_name = style_name;
         this.created_at = created_at;
@@ -44,19 +44,19 @@ public class DanceStyle {
         this.style_name = style_name;
     }
 
-    public LocalDate getCreated_at() {
+    public LocalDateTime getCreated_at() {
         return created_at;
     }
 
-    public void setCreated_at(LocalDate created_at) {
+    public void setCreated_at(LocalDateTime created_at) {
         this.created_at = created_at;
     }
 
-    public LocalDate getUpdated_at() {
+    public LocalDateTime getUpdated_at() {
         return updated_at;
     }
 
-    public void setUpdated_at(LocalDate updated_at) {
+    public void setUpdated_at(LocalDateTime updated_at) {
         this.updated_at = updated_at;
     }
 

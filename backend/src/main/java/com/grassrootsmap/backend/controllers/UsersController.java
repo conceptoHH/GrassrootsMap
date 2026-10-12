@@ -8,12 +8,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/users")
 public class UsersController {
-    private UsersService usersService;
+    //private UsersService usersService;
 
-    public UsersController(UsersService usersService) {
-        this.usersService = usersService;
-    }
+    //public UsersController(UsersService usersService) {
+        //this.usersService = usersService;
+    //}
 
-    @GetMapping
-    public ResponseEntity<>
+    //@GetMapping
+    //public ResponseEntity<>
 }
