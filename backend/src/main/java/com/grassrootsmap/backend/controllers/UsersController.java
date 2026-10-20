@@ -18,18 +18,14 @@ public class UsersController {
         this.usersService = usersService;
     }
 
-    @GetMapping("/{email}")
-    public ResponseEntity<UserResponseDTO> getSpecificUserById(@PathVariable String email){
-        UserResponseDTO user = usersService.getSpecificUserByEmail(email);
-    }
-
     @GetMapping("/{username}")
-    public ResponseEntity<UserResponseDTO> getSpecificUserByUsername(@PathVariable String username){
-        return null;
+    public ResponseEntity<UserResponseDTO> getSpecificUserByUsername(@PathVariable String username) throws Exception {
+        UserResponseDTO resp = usersService.getSpecificUserByUsername(username);
+        return ResponseEntity.ok(resp);
     }
 
     @PostMapping
     public HttpStatusCode createUser(@RequestBody UserRequestDTO requestDTO) {
-        return HttpStatusCode.valueOf(201);
+        return HttpStatusCode.valueOf(usersService.CreateUser(requestDTO).value());
     }
 }

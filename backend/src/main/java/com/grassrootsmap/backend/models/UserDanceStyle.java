@@ -22,8 +22,7 @@ public class UserDanceStyle {
     public UserDanceStyle() {
     }
 
-    public UserDanceStyle(Long id, Users user, DanceStyle danceStyle) {
-        this.id = id;
+    public UserDanceStyle( Users user, DanceStyle danceStyle) {
         this.user = user;
         this.danceStyle = danceStyle;
     }

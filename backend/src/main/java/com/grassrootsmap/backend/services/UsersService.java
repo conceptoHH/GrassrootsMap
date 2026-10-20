@@ -1,9 +1,10 @@
 package com.grassrootsmap.backend.services;
 
+import com.grassrootsmap.backend.DTOs.UserRequestDTO;
 import com.grassrootsmap.backend.DTOs.UserResponseDTO;
-import com.grassrootsmap.backend.services.impl.UsersServiceImpl;
+import org.springframework.http.HttpStatusCode;
 
 public interface UsersService {
     UserResponseDTO getSpecificUserByUsername(String username) throws Exception;
-    UserResponseDTO getSpecificUserByEmail(String email) throws Exception;
+    HttpStatusCode CreateUser(UserRequestDTO request);
 }

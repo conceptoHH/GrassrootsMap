@@ -2,38 +2,37 @@ package com.grassrootsmap.backend.DTOs;
 
 import com.grassrootsmap.backend.enums.UserRoleEnum;
 import com.grassrootsmap.backend.enums.UserStatusEnum;
+import com.grassrootsmap.backend.models.DanceStyle;
+import com.grassrootsmap.backend.models.GeolocationPoint;
+import com.grassrootsmap.backend.models.Socials;
+import org.locationtech.jts.geom.Point;
 
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class UserRequestDTO {
     private String username;
     private String email;
     private String password;
-    private UserRoleEnum role;
-    private UserStatusEnum status;
-    private LocalDateTime created_at;
-    private LocalDateTime updated_at;
+    private List<Long> dance_styles;
+    private String username_social;
+    private String link_social;
+    private Point public_location;
+    private Point exact_location;
 
     public UserRequestDTO(){}
 
-    public UserRequestDTO(
-                 String username,
-                 String email,
-                 String password,
-                 UserRoleEnum role,
-                 UserStatusEnum status,
-                 LocalDateTime created_at,
-                 LocalDateTime updated_at) {
+    public UserRequestDTO(String username, String email, String password, List<Long> dance_styles, String username_social, String link_social, Point public_location, Point exact_location) {
         this.username = username;
         this.email = email;
         this.password = password;
-        this.role = role;
-        this.status = status;
-        this.created_at = created_at;
-        this.updated_at = updated_at;
+        this.dance_styles = dance_styles;
+        this.username_social = username_social;
+        this.link_social = link_social;
+        this.public_location = public_location;
+        this.exact_location = exact_location;
     }
-
 
     public String getUsername() {
         return username;
@@ -59,36 +58,44 @@ public class UserRequestDTO {
         this.password = password;
     }
 
-    public UserRoleEnum getRole() {
-        return role;
+    public List<Long> getDance_styles() {
+        return dance_styles;
     }
 
-    public void setRole(UserRoleEnum role) {
-        this.role = role;
+    public void setDance_styles(List<Long> dance_styles) {
+        this.dance_styles = dance_styles;
     }
 
-    public UserStatusEnum getStatus() {
-        return status;
+    public String getUsername_social() {
+        return username_social;
     }
 
-    public void setStatus(UserStatusEnum status) {
-        this.status = status;
+    public void setUsername_social(String username_social) {
+        this.username_social = username_social;
     }
 
-    public LocalDateTime getCreated_at() {
-        return created_at;
+    public String getLink_social() {
+        return link_social;
     }
 
-    public void setCreated_at(LocalDateTime created_at) {
-        this.created_at = created_at;
+    public void setLink_social(String link_social) {
+        this.link_social = link_social;
     }
 
-    public LocalDateTime getUpdated_at() {
-        return updated_at;
+    public Point getPublic_location() {
+        return public_location;
     }
 
-    public void setUpdated_at(LocalDateTime updated_at) {
-        this.updated_at = updated_at;
+    public void setPublic_location(Point public_location) {
+        this.public_location = public_location;
+    }
+
+    public Point getExact_location() {
+        return exact_location;
+    }
+
+    public void setExact_location(Point exact_location) {
+        this.exact_location = exact_location;
     }
 }
 
