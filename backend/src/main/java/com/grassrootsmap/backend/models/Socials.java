@@ -29,8 +29,7 @@ public class Socials {
 
     public Socials() {}
 
-    public Socials(UUID id, String platform, String social_uname, String link, LocalDateTime created_at, LocalDateTime updated_at, Users users_id) {
-        this.id = id;
+    public Socials(String platform, String social_uname, String link, LocalDateTime created_at, LocalDateTime updated_at, Users users_id) {
         this.platform = platform;
         this.social_uname = social_uname;
         this.link = link;

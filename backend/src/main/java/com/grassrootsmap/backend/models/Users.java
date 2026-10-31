@@ -31,7 +31,7 @@ public class Users {
 
     public Users(){}
 
-    public Users(UUID id,
+    public Users(
                  String username,
                  String email,
                  String password,
@@ -39,7 +39,6 @@ public class Users {
                  UserStatusEnum status,
                  LocalDateTime created_at,
                  LocalDateTime updated_at) {
-        this.id = id;
         this.username = username;
         this.email = email;
         this.password = password;

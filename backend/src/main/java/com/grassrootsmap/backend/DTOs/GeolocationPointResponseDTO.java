@@ -9,11 +9,11 @@ public class GeolocationPointResponseDTO {
     private UUID id;
     private Point exact_location;
     private Point public_location;
-    private Users users;
+    private UserResponseGeoDTO users;
 
     public GeolocationPointResponseDTO(){}
 
-    public GeolocationPointResponseDTO(UUID id, Point exact_location, Point public_location, Users users) {
+    public GeolocationPointResponseDTO(UUID id, Point exact_location, Point public_location, UserResponseGeoDTO users) {
         this.id = id;
         this.exact_location = exact_location;
         this.public_location = public_location;
@@ -44,11 +44,11 @@ public class GeolocationPointResponseDTO {
         this.public_location = public_location;
     }
 
-    public Users getUsers() {
+    public UserResponseGeoDTO getUsers() {
         return users;
     }
 
-    public void setUsers(Users users) {
+    public void setUsers(UserResponseGeoDTO users) {
         this.users = users;
     }
 }

@@ -33,7 +33,14 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jdbc</artifactId>
-		</dependency>
+        </dependency>
+        <!-- Source: https://mvnrepository.com/artifact/org.n52.jackson/jackson-datatype-jts -->
+        <dependency>
+            <groupId>org.n52.jackson</groupId>
+            <artifactId>jackson-datatype-jts</artifactId>
+            <version>3.0.5</version>
+            <scope>compile</scope>
+        </dependency>
 		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>

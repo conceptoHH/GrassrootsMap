@@ -7,11 +7,13 @@ import com.grassrootsmap.backend.enums.UserStatusEnum;
 import com.grassrootsmap.backend.models.*;
 import com.grassrootsmap.backend.repositories.*;
 import com.grassrootsmap.backend.services.UsersService;
+import jakarta.transaction.Transactional;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -41,10 +43,10 @@ public class UsersServiceImpl implements UsersService {
         return resp.get();
     }
 
+    @Transactional
     @Override
     public HttpStatusCode CreateUser(UserRequestDTO request) {
         Users user = new Users(
-                UUID.randomUUID(),
                 request.getUsername(),
                 request.getEmail(),
                 request.getPassword(),
@@ -60,11 +62,17 @@ public class UsersServiceImpl implements UsersService {
         }
 
         List<DanceStyle> listDS = danceStyleRepository.findAllById(request.getDance_styles());
-        List<UserDanceStyle> listUDS = null;
-        for (DanceStyle danceStyle : listDS){
-                UserDanceStyle uds = new UserDanceStyle(user, danceStyle);
-                listUDS.add(uds);
+
+        if (listDS.isEmpty()) {
+            throw new RuntimeException("Could not find the dance styles: " + request.getDance_styles());
         }
+
+        List<UserDanceStyle> listUDS = new ArrayList<>();
+        for (DanceStyle danceStyle : listDS){
+            UserDanceStyle uds = new UserDanceStyle(user, danceStyle);
+            listUDS.add(uds);
+        }
+
         try {
             userDanceStyleRepository.saveAll(listUDS);
         } catch (Exception e) {
@@ -72,7 +80,6 @@ public class UsersServiceImpl implements UsersService {
         }
 
         Socials socials = new Socials(
-                UUID.randomUUID(),
                 "Instagram",
                 request.getUsername_social(),
                 request.getLink_social(),
@@ -87,7 +94,6 @@ public class UsersServiceImpl implements UsersService {
         }
 
         GeolocationPoint point = new GeolocationPoint(
-                UUID.randomUUID(),
                 request.getExact_location(),
                 request.getPublic_location(),
                 Boolean.TRUE,
@@ -100,7 +106,7 @@ public class UsersServiceImpl implements UsersService {
             geolocationPointRepository.save(point);
         } catch (Exception e) {
             throw new RuntimeException(e);
-        }
+       }
 
         return HttpStatus.CREATED;
     }

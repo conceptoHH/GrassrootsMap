@@ -9,6 +9,6 @@ import java.util.Optional;
 import java.util.UUID;
 
 public interface UsersRepository extends JpaRepository<Users, UUID> {
-    @Query(value = "SELECT * FROM get_user_profile(:username)", nativeQuery = true)
+    @Query(value = "SELECT * FROM get_user_profile_w_username(:username)", nativeQuery = true)
     Optional<UserResponseDTO> getUserProfile(String username);
 }

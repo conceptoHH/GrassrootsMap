@@ -1,6 +1,7 @@
 package com.grassrootsmap.backend.services.impl;
 
 import com.grassrootsmap.backend.DTOs.GeolocationPointResponseDTO;
+import com.grassrootsmap.backend.DTOs.UserResponseGeoDTO;
 import com.grassrootsmap.backend.models.GeolocationPoint;
 import com.grassrootsmap.backend.repositories.GeolocationPointRepository;
 import com.grassrootsmap.backend.services.GeolocationPointService;
@@ -27,7 +28,7 @@ public class GeolocationPointServiceImpl implements GeolocationPointService {
         dto.setId(gp.getId());
         dto.setExact_location(gp.getExact_location());
         dto.setPublic_location(gp.getPublic_location());
-        dto.setUsers(gp.getUser_id());
+        dto.setUsers(new UserResponseGeoDTO(gp.getUser_id().getUsername(),gp.getUser_id().getEmail()));
         return dto;
     }
 }

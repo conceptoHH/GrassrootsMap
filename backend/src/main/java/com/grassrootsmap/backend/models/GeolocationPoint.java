@@ -30,8 +30,7 @@ public class GeolocationPoint {
 
     public GeolocationPoint() {}
 
-    public GeolocationPoint(UUID id, Point exact_location, Point public_location, Boolean visibility, Users user, LocalDateTime created_at, LocalDateTime updated_at) {
-        this.id = id;
+    public GeolocationPoint(Point exact_location, Point public_location, Boolean visibility, Users user, LocalDateTime created_at, LocalDateTime updated_at) {
         this.exact_location = exact_location;
         this.public_location = public_location;
         this.visibility = visibility;
