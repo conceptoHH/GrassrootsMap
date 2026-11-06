@@ -2,7 +2,6 @@ package com.grassrootsmap.backend.controllers;
 
 import com.grassrootsmap.backend.DTOs.GeolocationPointResponseDTO;
 import com.grassrootsmap.backend.services.GeolocationPointService;
-import org.springframework.data.repository.query.Param;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,7 +31,7 @@ public class GeolocationPointController {
                 minLat,
                 maxLng,
                 maxLat);
-        return ResponseEntity.ok(points);
+        return ResponseEntity.ok().header("Access-Control-Allow-Origin","*").body(points);
     }
 
 }
