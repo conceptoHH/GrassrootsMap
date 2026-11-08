@@ -31,7 +31,7 @@ public class GeolocationPointController {
                 minLat,
                 maxLng,
                 maxLat);
-        return ResponseEntity.ok().header("Access-Control-Allow-Origin","*").body(points);
+        return ResponseEntity.ok().header("Access-Control-Allow-Origin","*").body(points) ;
     }
 
 }
